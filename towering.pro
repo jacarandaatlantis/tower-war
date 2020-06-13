@@ -27,11 +27,15 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    mybutton.cpp
+    mybutton.cpp \
+    mybattle.cpp \
+    towers.cpp
 
 HEADERS += \
         mainwindow.h \
-    mybutton.h
+    mybutton.h \
+    mybattle.h \
+    towers.h
 
 FORMS += \
         mainwindow.ui

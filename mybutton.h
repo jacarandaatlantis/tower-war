@@ -8,8 +8,9 @@ class MyButton : public QPushButton
 {
     Q_OBJECT
 public:
-    MyButton(QString lane);
-
+    MyButton(QString pix);
+    void zoomdown();
+    void zoomup();
 signals:
 
 };

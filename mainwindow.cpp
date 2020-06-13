@@ -5,7 +5,9 @@
 #include<QPaintEvent>
 #include<QPushButton>
 #include<QDebug>
+#include<QTimer>
 #include"mybutton.h"
+#include"mybattle.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,7 +17,19 @@ MainWindow::MainWindow(QWidget *parent) :
     MyButton *bin=new MyButton(":/closed.jpg");
     bin->setParent(this);
     bin->move(50,50);
-    connect(bin,&MyButton::clicked,this,&QMainWindow::close);
+    MyBattle *scene = new MyBattle;
+    connect(bin,&QPushButton::clicked,this,[=](){
+        bin->zoomdown();
+        bin->zoomup();
+        QTimer::singleShot(500,this,[=](){
+            this->hide();
+            scene->show();
+        });
+    });
+    connect(scene,&MyBattle::chooseBack,this,[=](){
+        scene->hide();
+        this->show();
+    });
 }
 
 MainWindow::~MainWindow()
